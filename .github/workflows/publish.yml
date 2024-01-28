@@ -1,0 +1,23 @@
+name: publish
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish articles on hashnode
+        uses: raunakgurud09/action-hello@v2.2
+        id: publish_hashnode
+        with:
+          title: "New blog title"
+          files: "Content/**/*.md"
+          hashnode_key: ${{secrets.HASHNODE_KEY}}
+      - name: Get get output
+        run: echo "The time was ${{steps.publish_hashnode.outputs.time}} message ${{steps.publish_hashnode.outputs.message}}"
