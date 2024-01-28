@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish articles on hashnode
-        uses: raunakgurud09/action-hello@v2.4
         id: publish_hashnode
+        uses: raunakgurud09/action-hello@v2.5
         with:
           title: "New blog title"
           files: "Content/**/*.md"
           hashnode_key: ${{secrets.HASHNODE_KEY}}
       - name: Get get output
-        run: echo "The time was ${{steps.publish_hashnode.outputs.time}} message ${{steps.publish_hashnode.outputs.message}}"
+        run: echo "The time was ${{steps.publish_hashnode.outputs.result_json}} message ${{steps.publish_hashnode.outputs.result_summary}}"
