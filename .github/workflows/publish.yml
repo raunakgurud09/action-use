@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Publish articles on hashnode
         id: publish_hashnode
-        uses: raunakgurud09/action-hello@v2.5
+        uses: raunakgurud09/action-hello@v2.6
         with:
           title: "New blog title"
-          files: "Content/**/*.md"
+          files: "vue/**/*.md"
           hashnode_key: ${{secrets.HASHNODE_KEY}}
       - name: Get get output
         run: echo "The time was ${{steps.publish_hashnode.outputs.result_json}} message ${{steps.publish_hashnode.outputs.result_summary}}"
