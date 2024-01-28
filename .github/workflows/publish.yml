@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish articles on hashnode
-        uses: raunakgurud09/action-hello@v2.3 
+        uses: raunakgurud09/action-hello@v2.4
         id: publish_hashnode
         with:
           title: "New blog title"
