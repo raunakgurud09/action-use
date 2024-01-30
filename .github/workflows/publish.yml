@@ -1,23 +1,21 @@
-name: publish
+name: "Publish"
 
-on:
+on: 
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
+
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish articles on hashnode
-        id: publish_hashnode
-        uses: raunakgurud09/action-hello@v3.0
+      - uses: actions/checkout@v4
+      - name: Hashnode publish
+        id: publish_hashnode              
+        uses: raunakgurud09/hashnode-publish@v1
         with:
-          title: "New blog title"
-          files: "vue/**/*.md"
+          host: "levelupdevs.hashnode.dev"
+          file: "post/blog/dynamic-routing-static-regeneration.md"
           hashnode_key: ${{secrets.HASHNODE_KEY}}
       - name: Get get output
-        run: echo "The time was ${{steps.publish_hashnode.outputs.result_json}} message ${{steps.publish_hashnode.outputs.result_summary}}"
+        run: echo "me- ${{steps.publish_hashnode.outputs.result_json}} length ${{steps.publish_hashnode.outputs.result_summary}}"
