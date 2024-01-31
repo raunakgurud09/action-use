@@ -1,3 +1,3 @@
-# action-use-hello
+# action-use
 
 should not work
