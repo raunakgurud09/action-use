@@ -1,0 +1,23 @@
+name: "Publish to hasnode"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hashnode publish
+        id: publish_hashnode
+        uses: raunakgurud09/hashnode-publish@v2
+        with:
+          hashnode_key: ${{secrets.HASHNODE_KEY}}
+          file: "post/blog/deploy-nextjs-app.md"
+          host: "levelupdevs.hashnode.dev"
+      - name: Get get output
+        run: echo "${{steps.publish_hashnode.outputs.result_json}} summary ${{steps.publish_hashnode.outputs.result_summary}}"
