@@ -1,9 +1,8 @@
 name: "Publish"
 
-on: 
+on:
   push:
     branches: ["main"]
-  
 
 jobs:
   publish:
@@ -11,11 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Hashnode publish
-        id: publish_hashnode              
-        uses: raunakgurud09/hashnode-publish@v1
+        id: publish_hashnode
+        uses: raunakgurud09/hashnode-publish@v2
         with:
           host: "levelupdevs.hashnode.dev"
           file: "post/blog/dynamic-routing-static-regeneration.md"
           hashnode_key: ${{secrets.HASHNODE_KEY}}
       - name: Get get output
-        run: echo "me- ${{steps.publish_hashnode.outputs.result_json}} length ${{steps.publish_hashnode.outputs.result_summary}}"
+        run: echo "${{steps.publish_hashnode.outputs.result_json}} length ${{steps.publish_hashnode.outputs.result_summary}}"
