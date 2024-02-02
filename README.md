@@ -1,6 +1,5 @@
 # Action use
 
-
 Automate your blogging workflow! This GitHub Action enables you to effortlessly publish your Markdown file to Hashnode with a single push. Say goodbye to manual steps and hello to streamlined publishing.
 
 ## Usage
